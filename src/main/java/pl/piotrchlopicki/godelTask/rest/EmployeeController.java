@@ -39,17 +39,19 @@ public class EmployeeController {
     }
 
     @PostMapping("/employee")
-    public void postEmployee(@RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<Void> postEmployee(@RequestBody EmployeeDTO employeeDTO) {
         log.info("post-/employee");
         requestValidator.validatePost(employeeDTO);
         employeeService.insertEmployee(employeeDTO);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("/employee")
-    public void updateEmployee(@RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<Void> updateEmployee(@RequestBody EmployeeDTO employeeDTO) {
         log.info("put-/employee");
         requestValidator.validatePut(employeeDTO);
         employeeService.updateEmployee(employeeDTO);
+        return ResponseEntity.ok().build();
     }
 
 
