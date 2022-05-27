@@ -14,6 +14,7 @@ import pl.piotrchlopicki.godelTask.service.EmployeeService;
 import pl.piotrchlopicki.godelTask.utils.RequestValidator;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 @ExtendWith(SpringExtension.class)
 class EmployeeControllerTest {
     @Mock
@@ -22,10 +23,12 @@ class EmployeeControllerTest {
     RequestValidator requestValidator = new RequestValidator();
 
     EmployeeController employeeController;
+
     @BeforeEach
     public void setUp() {
         employeeController = new EmployeeController(employeeService, requestValidator);
     }
+
     @Test
     @DisplayName("should throw BadRequestException when all fields are empty - post new employee")
     public void shouldThrowBadRequestExceptionWhenAllFieldsAreEmptyPostEmployee() {
@@ -104,6 +107,7 @@ class EmployeeControllerTest {
         Assertions.assertEquals("Missing required input!", exception.getMessage());
         Assertions.assertEquals(HttpStatus.BAD_REQUEST.name(), exception.getCode());
     }
+
     @Test
     @DisplayName("should throw BadRequestException when id is missing")
     public void shouldThrowBadRequestExceptionWhenIdIsMissingUpdateEmployee() {

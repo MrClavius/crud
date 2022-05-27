@@ -34,7 +34,7 @@ class EmployeeServiceTest {
     @DisplayName("should return correct response from get employee by id")
     public void shouldReturnCorrectResponseFromGetEmployeeById() {
         final Employee employee = Employee.builder()
-                .employeeId(1)
+                .employeeId(1L)
                 .firstName("test")
                 .lastName("test")
                 .build();
@@ -61,12 +61,12 @@ class EmployeeServiceTest {
     @DisplayName("should return array of employees when found them on db")
     public void shouldReturnArrayOfEmployees() {
         final Employee employee1 = Employee.builder()
-                .employeeId(1)
+                .employeeId(1L)
                 .firstName("test")
                 .lastName("test")
                 .build();
         final Employee employee2 = Employee.builder()
-                .employeeId(2)
+                .employeeId(2L)
                 .firstName("test1")
                 .lastName("test1")
                 .build();
@@ -91,7 +91,7 @@ class EmployeeServiceTest {
     @DisplayName("should return correct response from insert employee")
     public void shouldReturnCorrectResponseFromInsertEmployee() {
         final Employee employee = Employee.builder()
-                .employeeId(1)
+                .employeeId(1L)
                 .firstName("test")
                 .lastName("test")
                 .build();
@@ -104,7 +104,7 @@ class EmployeeServiceTest {
     @DisplayName("should return correct response from insert employee")
     public void shouldReturnCorrectResponseOnUpdateEmployee() {
         final Employee employee = Employee.builder()
-                .employeeId(1)
+                .employeeId(1L)
                 .firstName("test")
                 .lastName("test")
                 .build();
@@ -116,7 +116,7 @@ class EmployeeServiceTest {
     @Test
     @DisplayName("should return correct response from delete employee")
     public void shouldReturnCorrectResponseOnDeleteEmployee() {
-       Assertions.assertDoesNotThrow(
+        Assertions.assertDoesNotThrow(
                 () -> employeeService.deleteEmployee(1L));
     }
 }

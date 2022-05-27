@@ -10,7 +10,6 @@ import pl.piotrchlopicki.godelTask.rest.exception.BaseApiError;
 import pl.piotrchlopicki.godelTask.rest.exception.NotFoundException;
 
 @ControllerAdvice
-
 public class MainExceptionHandler {
     @ExceptionHandler(value = NotFoundException.class)
     protected ResponseEntity<ApiErrorResponse> handleNotFoundException(BaseApiError ex) {
