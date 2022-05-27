@@ -18,7 +18,7 @@ import java.util.List;
 public class EmployeeDAO {
     private final JdbcTemplate jdbcTemplate;
 
-    public List<Employee> findAll(){
+    public List<Employee> findAll() {
         return jdbcTemplate.query("SELECT * FROM employee", new EmployeeRowMapper());
     }
 
@@ -31,19 +31,28 @@ public class EmployeeDAO {
             throw new NotFoundException("Employee not found", HttpStatus.NOT_FOUND.name());
         }
     }
+
     public void deleteEmployee(final long employeeId) {
         final String deleteQuery = "delete from employee where employee_id = ?";
-        jdbcTemplate.update(deleteQuery, employeeId);
+        int updated = jdbcTemplate.update(deleteQuery, employeeId);
+        if (updated == 0) {
+            log.error("Employee with id: {} not found", employeeId);
+            throw new NotFoundException("Employee with id: " + employeeId + " not found", HttpStatus.NOT_FOUND.name());
+        }
     }
 
     public void updateEmployee(final Employee employeeRequest) {
         final String updateQuery = "update employee set first_name = ?, last_name =  ?, department_id = ?, job_title = ? where employee_id = ?";
-        jdbcTemplate.update(updateQuery,
+        int updated = jdbcTemplate.update(updateQuery,
                 employeeRequest.getFirstName(),
                 employeeRequest.getLastName(),
                 employeeRequest.getDepartmentId(),
                 employeeRequest.getJobTitle(),
                 employeeRequest.getEmployeeId());
+        if (updated == 0) {
+            log.error("Employee with id: {} not found", employeeRequest.getEmployeeId());
+            throw new NotFoundException("Employee with id: " + employeeRequest.getEmployeeId() + " not found", HttpStatus.NOT_FOUND.name());
+        }
     }
 
     public void insertEmployee(final Employee employeeRequest) {

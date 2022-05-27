@@ -16,12 +16,13 @@ public class MainExceptionHandler {
     protected ResponseEntity<ApiErrorResponse> handleNotFoundException(BaseApiError ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(createErrorMessage(ex));
     }
+
     @ExceptionHandler(value = BadRequestException.class)
     protected ResponseEntity<ApiErrorResponse> handleBadRequestException(BaseApiError ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(createErrorMessage(ex));
     }
 
-    private ApiErrorResponse createErrorMessage(BaseApiError ex){
+    private ApiErrorResponse createErrorMessage(BaseApiError ex) {
         return ApiErrorResponse.builder()
                 .message(ex.getMessage())
                 .code(ex.getCode())

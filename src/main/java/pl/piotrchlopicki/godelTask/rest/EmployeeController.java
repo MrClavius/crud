@@ -20,9 +20,9 @@ public class EmployeeController {
     private final RequestValidator requestValidator;
 
     @GetMapping("/employee")
-    public List<EmployeeDTO> getEmployeeList() {
+    public ResponseEntity<List<EmployeeDTO>> getEmployeeList() {
         log.info("get-/employee");
-        return employeeService.findAll();
+        return ResponseEntity.ok(employeeService.findAll());
     }
 
     @GetMapping("/employee/{id}")

@@ -25,15 +25,16 @@ public class EmployeeService {
                 .map(employeeMapper::mapEmployeetoDTO)
                 .collect(Collectors.toList());
     }
-    public void deleteEmployee(long id){
+
+    public void deleteEmployee(long id) {
         employeeDAO.deleteEmployee(id);
     }
 
-    public void updateEmployee(EmployeeDTO employeeDTO){
+    public void updateEmployee(EmployeeDTO employeeDTO) {
         employeeDAO.updateEmployee(employeeMapper.mapDTOtoEmployee(employeeDTO));
     }
 
-    public void insertEmployee(EmployeeDTO employeeDTO){
+    public void insertEmployee(EmployeeDTO employeeDTO) {
         employeeDAO.insertEmployee(employeeMapper.mapDTOtoEmployee(employeeDTO));
     }
 
