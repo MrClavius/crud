@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Getter
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-public class BadRequestException extends BaseApiError {
+public class BadRequestException extends BaseApiException {
 
     public BadRequestException(String message, String code) {
         super(message, code);

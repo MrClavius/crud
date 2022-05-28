@@ -1,4 +1,4 @@
-package pl.piotrchlopicki.godelTask.rest.exception;
+package pl.piotrchlopicki.godelTask.rest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

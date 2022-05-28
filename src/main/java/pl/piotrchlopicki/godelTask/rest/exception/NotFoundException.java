@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Getter
 @ResponseStatus(code = HttpStatus.NOT_FOUND)
-public class NotFoundException extends BaseApiError {
+public class NotFoundException extends BaseApiException {
 
     public NotFoundException(String message, String code) {
         super(message, code);
